@@ -20,7 +20,10 @@ class Predictor(BasePredictor):
         image = download_image(image_url)
         images = self.pipe(prompt=prompt, num_inference_steps=20, image_guidance_scale=1.5, guidance_scale=7, image=image).images
         output = images[0]
-        return base64.b64encode(output)
+        im_file = BytesIO()
+        output.save(im_file, format="JPEG")
+        im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
+        return base64.b64encode(im_bytes)
 
 
 def download_image(url):
