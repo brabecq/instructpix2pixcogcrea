@@ -3,6 +3,7 @@ import torch
 from diffusers import StableDiffusionInstructPix2PixPipeline, EulerAncestralDiscreteScheduler
 import PIL
 import requests
+
 model_id = "timbrooks/instruct-pix2pix"
 
 class Predictor(BasePredictor):
@@ -12,7 +13,7 @@ class Predictor(BasePredictor):
         self.pipe.scheduler = EulerAncestralDiscreteScheduler.from_config(self.pipe.scheduler.config)
 
     # The arguments and types the model takes as input
-    def predict(self, prompt:str="", image_url:str="", num_inference_steps:int=20, image_guidance_scale:float=20, guidance_scale:float=7):
+    def predict(self, prompt:str="", image_url:str="", num_inference_steps:int=20, image_guidance_scale:float=20, guidance_scale:float=7) --> Any:
         """Run a single prediction on the model"""
         image = download_image(image_url)
         images = self.pipe(prompt=prompt, num_inference_steps=20, image_guidance_scale=1.5, guidance_scale=7, image=image).images
