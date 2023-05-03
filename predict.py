@@ -5,6 +5,7 @@ import PIL
 import requests
 from typing import Any
 import base64
+from io import BytesIO
 
 model_id = "timbrooks/instruct-pix2pix"
 
