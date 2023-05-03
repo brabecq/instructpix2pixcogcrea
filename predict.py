@@ -20,7 +20,7 @@ class Predictor(BasePredictor):
         images = self.pipe(prompt=prompt, num_inference_steps=20, image_guidance_scale=1.5, guidance_scale=7, image=image).images
         output = images[0]
         print("done")
-        return output
+        return output.encode("base64")
 
 
 def download_image(url):
