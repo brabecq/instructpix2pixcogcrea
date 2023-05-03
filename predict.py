@@ -4,6 +4,7 @@ from diffusers import StableDiffusionInstructPix2PixPipeline, EulerAncestralDisc
 import PIL
 import requests
 from typing import Any
+import base64
 
 model_id = "timbrooks/instruct-pix2pix"
 
@@ -19,8 +20,7 @@ class Predictor(BasePredictor):
         image = download_image(image_url)
         images = self.pipe(prompt=prompt, num_inference_steps=20, image_guidance_scale=1.5, guidance_scale=7, image=image).images
         output = images[0]
-        print("done")
-        return output.encode("base64")
+        return base64.b64encode(output)
 
 
 def download_image(url):
