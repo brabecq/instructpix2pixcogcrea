@@ -22,7 +22,7 @@ class Predictor(BasePredictor):
         images = self.pipe(prompt=prompt, num_inference_steps=num_inference_steps, image_guidance_scale=image_guidance_scale, guidance_scale=guidance_scale, image=image).images
         output = images[0]
         im_file = BytesIO()
-        output.save(im_file, format="JPEG")
+        output.save(im_file, format="PNG")
         im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
         return base64.b64encode(im_bytes)
 
