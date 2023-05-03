@@ -12,7 +12,7 @@ class Predictor(BasePredictor):
         self.pipe.scheduler = EulerAncestralDiscreteScheduler.from_config(self.pipe.scheduler.config)
 
     # The arguments and types the model takes as input
-    def predict(self, prompt="", image_url='', num_inference_steps=20, image_guidance_scale=1.5, guidance_scale=7):
+    def predict(self, prompt:str="", image_url:str="", num_inference_steps:int=20, image_guidance_scale:float=20, guidance_scale:float=7):
         """Run a single prediction on the model"""
         image = download_image(image_url)
         images = self.pipe(prompt=prompt, num_inference_steps=20, image_guidance_scale=1.5, guidance_scale=7, image=image).images
@@ -27,3 +27,4 @@ def download_image(url):
     image = image.resize((512, 512), resample=PIL.Image.NEAREST)
     image = image.convert("RGB")
     return image 
+
