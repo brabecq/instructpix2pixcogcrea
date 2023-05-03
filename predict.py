@@ -3,6 +3,7 @@ import torch
 from diffusers import StableDiffusionInstructPix2PixPipeline, EulerAncestralDiscreteScheduler
 import PIL
 import requests
+from typing import Any
 
 model_id = "timbrooks/instruct-pix2pix"
 
