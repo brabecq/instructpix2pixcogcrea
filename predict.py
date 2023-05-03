@@ -30,7 +30,6 @@ class Predictor(BasePredictor):
 def download_image(url):
     image = PIL.Image.open(requests.get(url, stream=True).raw)
     image = PIL.ImageOps.exif_transpose(image)
-    image = image.resize((512, 512), resample=PIL.Image.NEAREST)
     image = image.convert("RGB")
     return image 
 
