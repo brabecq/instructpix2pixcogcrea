@@ -18,9 +18,8 @@ class Predictor(BasePredictor):
         """Run a single prediction on the model"""
         image = download_image(image_url)
         images = self.pipe(prompt=prompt, num_inference_steps=20, image_guidance_scale=1.5, guidance_scale=7, image=image).images
-        print(images)
-        images[0].save("cyborg.png")
-        return None
+        output = images[0]
+        return output
 
 
 def download_image(url):
