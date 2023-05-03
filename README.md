@@ -11,4 +11,6 @@ git clone https://github.com/brabecq/instructpix2pixcogcrea.git
 cd instructpix2pixcogcrea
 chmod +x makefile.sh
 ./makefile.sh
-'''
+```
+
+And that's it!
