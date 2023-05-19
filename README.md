@@ -1,7 +1,7 @@
 # instructpix2pixcogcrea
 Cog repo for instructpix2pix for the crea.visions project
 
-##Lambda labs
+## Lambda labs
 When the instance on lambda labs is created and the SSH key setup run on your computer:
 ```console
 ssh -i <your-ssh-key> ubuntu@<IP> 
@@ -15,7 +15,7 @@ chmod +x makefile.sh
 ./makefile.sh
 ```
 
-##Paperspace
+## Paperspace
 ```console
 ssh paperspace@<IP>
 ```
