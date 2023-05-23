@@ -2,7 +2,6 @@ build:
   gpu: true
   python_version: "3.8"
   python_packages:
-    - python==3.8.5
     - pip==20.3
     - cudatoolkit==11.3
     - pytorch==1.11.0
