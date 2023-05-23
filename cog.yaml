@@ -3,7 +3,6 @@ build:
   python_version: "3.8"
   python_packages:
     - pip==20.3
-    - cudatoolkit==11.3
     - pytorch==1.11.0
     - torchvision==0.12.0
     - numpy==1.19.2
