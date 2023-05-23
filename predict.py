@@ -23,7 +23,7 @@ class Predictor(BasePredictor):
         self.world_size = world_size
 
     # The arguments and types the model takes as input
-    def predict(self, prompt:str="", image_url:str="", num_inference_steps:int=100, image_guidance_scale:float=20, guidance_scale:float=7.0, gpu_index=0) -> Any:
+    def predict(self, prompt:str="", image_url:str="", num_inference_steps:int=100, image_guidance_scale:float=20, guidance_scale:float=7.0, gpu_index:int=0) -> Any:
         """Run a single prediction on the model"""
         # create default process group
         return run_inference(gpu_index, self.world_size, prompt, image_url, num_inference_steps, image_guidance_scale, guidance_scale, self.pipe)
