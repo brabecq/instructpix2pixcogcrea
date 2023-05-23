@@ -6,13 +6,20 @@ import requests
 from typing import Any
 import base64
 from io import BytesIO
+from torch.nn import DataParallel
 
-model_id = "timbrooks/instruct-pix2pix"
 
 class Predictor(BasePredictor):
     def setup(self):
+        # Define the device to run the model on
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
         """Load the model into memory to make running multiple predictions efficient"""
-        self.pipe = StableDiffusionInstructPix2PixPipeline.from_pretrained(model_id, torch_dtype=torch.float16, safety_checker=None).to("cuda")
+        model_id = "timbrooks/instruct-pix2pix"
+        pipe = StableDiffusionInstructPix2PixPipeline.from_pretrained(model_id, torch_dtype=torch.float16,
+                                                                           safety_checker=None)
+        if torch.cuda.device_count() > 1:
+            pipe = DataParallel(pipe)
+        self.pipe = pipe.to(self.device)
         self.pipe.scheduler = EulerAncestralDiscreteScheduler.from_config(self.pipe.scheduler.config)
 
     # The arguments and types the model takes as input
@@ -33,3 +40,6 @@ def download_image(url):
     image = image.convert("RGB")
     return image 
 
+
+if __name__ == "__main__":
+    Predictor().setup()
