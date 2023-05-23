@@ -5,7 +5,6 @@ build:
     - pillow==9.1.0
     - diffusers @ git+https://github.com/huggingface/diffusers.git@a7f25b4a881c0835980e2a3db5fe09bfc4ab2dc0
     - accelerate==0.18.0
-    - transformers==4.28.1
     - scipy==1.9.3
     - torch==1.13.0
     - pip==20.3
