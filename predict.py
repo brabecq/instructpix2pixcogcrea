@@ -4,7 +4,7 @@ from diffusers import StableDiffusionInstructPix2PixPipeline, EulerAncestralDisc
 from typing import Any
 
 import torch.multiprocessing as mp
-from .run_distributed import run_inference
+from run_distributed import run_inference
 
 model_id = "timbrooks/instruct-pix2pix"
 
