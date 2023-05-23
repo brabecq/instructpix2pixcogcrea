@@ -3,7 +3,7 @@ import torch
 from diffusers import StableDiffusionInstructPix2PixPipeline, EulerAncestralDiscreteScheduler
 from typing import Any
 
-import torch.multiprocessing as mp
+from torch import multiprocessing as mp
 from run_distributed import run_inference
 
 model_id = "timbrooks/instruct-pix2pix"
