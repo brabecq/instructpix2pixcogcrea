@@ -3,12 +3,33 @@ build:
   python_version: "3.8"
   python_packages:
     - pillow==9.1.0
-    - diffusers @ git+https://github.com/huggingface/diffusers.git@a7f25b4a881c0835980e2a3db5fe09bfc4ab2dc0
     - accelerate==0.18.0
-    - transformers==4.28.1
-    - "huggingface-hub==0.13.2"
-    - "scipy==1.9.3"
-    - "torch==1.13.0"
-
-    - torchvision==0.14.0
+    - scipy==1.9.3
+    - torch==1.11.0
+    - pip==20.3
+    - torchvision==0.12.0
+    - numpy==1.19.2
+    - albumentations==0.4.3
+    - datasets==2.8.0
+    - diffusers==0.12.1
+    - opencv-python==4.1.2.30
+    - pudb==2019.2
+    - invisible-watermark
+    - imageio==2.9.0
+    - imageio-ffmpeg==0.4.2
+    - pytorch-lightning==1.4.2
+    - omegaconf==2.1.1
+    - test-tube>=0.7.5
+    - streamlit>=0.73.1
+    - einops==0.3.0
+    - torch-fidelity==0.3.0
+    - transformers==4.19.2
+    - torchmetrics==0.6.0
+    - kornia==0.6
+    - -e git+https://github.com/CompVis/taming-transformers.git@master#egg=taming-transformers
+    - -e git+https://github.com/openai/CLIP.git@main#egg=clip
+    - openai
+    - gradio
+    - seaborn
+    - git+https://github.com/crowsonkb/k-diffusion.git
 predict: "predict.py:Predictor"
