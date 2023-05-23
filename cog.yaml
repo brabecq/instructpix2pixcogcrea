@@ -6,7 +6,7 @@ build:
     - diffusers @ git+https://github.com/huggingface/diffusers.git@a7f25b4a881c0835980e2a3db5fe09bfc4ab2dc0
     - accelerate==0.18.0
     - scipy==1.9.3
-    - torch==1.13.0
+    - torch==1.11.0
     - pip==20.3
     - torchvision==0.12.0
     - numpy==1.19.2
