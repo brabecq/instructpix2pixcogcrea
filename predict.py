@@ -6,7 +6,7 @@ from typing import Any
 import logging
 import requests
 
-from torch.multiprocessing import Process
+from torch.multiprocessing import Value
 
 
 class Predictor(BasePredictor):
@@ -31,16 +31,17 @@ class Predictor(BasePredictor):
                 id: int = 0
                 ) -> Any:
         """Run a single prediction on the model"""
-        # task = Process(target=run_inference, args=(id,
-        #                      prompt, image_url,
-        #                      num_inference_steps,
-        #                      image_guidance_scale,
-        #                      guidance_scale,
-        #                      self.pipe[id]))
-        # task.start()
+        task = Value(target=run_inference, args=(id,
+                             prompt, image_url,
+                             num_inference_steps,
+                             image_guidance_scale,
+                             guidance_scale,
+                             self.pipe[id]))
+        task.start()
         print("Started task on GPU %s" % id)
-        result = run_inference(id,
-                      prompt, image_url, num_inference_steps,
-                        image_guidance_scale, guidance_scale, self.pipe[id])
+        # result = run_inference(id,
+        #               prompt, image_url, num_inference_steps,
+        #                 image_guidance_scale, guidance_scale, self.pipe[id])
+        result = task.get()
         print("Task finished")
         return result
