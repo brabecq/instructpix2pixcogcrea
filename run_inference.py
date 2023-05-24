@@ -13,10 +13,6 @@ def run_inference(rank,
                   image_guidance_scale: float = 7.5,
                   guidance_scale: float = 1.5,
                   pipe: DiffusionPipeline = None):
-    # Log the process
-    log_process = "Processing job_id: %s" % (rank)
-    logging.info(log_process)
-
     # Process the image
     image = download_image(image_url)
     images = pipe(prompt=prompt, num_inference_steps=num_inference_steps,
@@ -25,8 +21,7 @@ def run_inference(rank,
     im_file = BytesIO()
     output.save(im_file, format="PNG")
     im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
-    log_process = "Processed job_id: %s" % (rank)
-    logging.info(log_process)
+
     return {"img": base64.b64encode(im_bytes), "gpu_index": rank}
 
 

@@ -4,6 +4,7 @@ from diffusers import StableDiffusionInstructPix2PixPipeline, EulerAncestralDisc
 from run_inference import run_inference
 from typing import Any
 import logging
+from requests import request
 
 from torch.multiprocessing import Process
 
@@ -27,15 +28,15 @@ class Predictor(BasePredictor):
                 num_inference_steps:int=100,
                 image_guidance_scale:float=20,
                 guidance_scale:float=7.0,
-                gpu_index:int=0
                 ) -> Any:
         """Run a single prediction on the model"""
-
-        task = Process(target=run_inference, args=(gpu_index,
+        id = request.id
+        task = Process(target=run_inference, args=(id,
                              prompt, image_url,
                              num_inference_steps,
                              image_guidance_scale,
                              guidance_scale,
-                             self.pipe[gpu_index]))
+                             self.pipe[id]))
         task.start()
-        logging.log(logging.INFO, "Started task on GPU %s" % gpu_index)
+        logging.log(logging.INFO, "Started task on GPU %s" % id)
+        return task
