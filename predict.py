@@ -30,7 +30,7 @@ class Predictor(BasePredictor):
                 guidance_scale:float=7.0,
                 ) -> Any:
         """Run a single prediction on the model"""
-        id = request.id
+        id = request.get(id)
         task = Process(target=run_inference, args=(id,
                              prompt, image_url,
                              num_inference_steps,
