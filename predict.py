@@ -1,44 +1,11 @@
 from cog import BasePredictor, Input, Path
 import torch
 from diffusers import StableDiffusionInstructPix2PixPipeline, EulerAncestralDiscreteScheduler
+from run_inference import run_inference
 from typing import Any
-import base64
-from io import BytesIO
-from diffusers import DiffusionPipeline
-import PIL
-import requests
-import torch.distributed as dist
 import logging
 
 from torch.multiprocessing import Process
-
-def run_inference(rank,
-                  prompt: str = "",
-                  image_url: str = "",
-                  num_inference_steps: int = 100,
-                  image_guidance_scale: float = 7.5,
-                  guidance_scale: float = 1.5,
-                  pipe: DiffusionPipeline = None):
-    # Log the process
-    log_process = "Processing job_id: %s, job_operator: %s \n" % (rank)
-    logging.info(log_process)
-
-    # Process the image
-    image = download_image(image_url)
-    images = pipe(prompt=prompt, num_inference_steps=num_inference_steps,
-                  image_guidance_scale=image_guidance_scale, guidance_scale=guidance_scale, image=image).images
-    output = images[0]
-    im_file = BytesIO()
-    output.save(im_file, format="PNG")
-    im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
-    return {"img": base64.b64encode(im_bytes), "gpu_index": rank}
-
-
-def download_image(url):
-    image = PIL.Image.open(requests.get(url, stream=True).raw)
-    image = PIL.ImageOps.exif_transpose(image)
-    image = image.convert("RGB")
-    return image
 
 
 class Predictor(BasePredictor):
