@@ -43,5 +43,4 @@ class Predictor(BasePredictor):
         # result = run_inference(id,
         #               prompt, image_url, num_inference_steps,
         #                 image_guidance_scale, guidance_scale, self.pipe[id])
-        print("Task finished")
         return None
