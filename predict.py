@@ -46,8 +46,9 @@ class Predictor(BasePredictor):
     def setup(self):
         """Load the model into memory to make running multiple predictions efficient"""
         self.world_size = torch.cuda.device_count()
-        self.pipe = [StableDiffusionInstructPix2PixPipeline.from_pretrained(model_id, torch_dtype=torch.float16, safety_checker=None)
-                     .to(f"cuda:{i}")
+        self.pipe = [
+            StableDiffusionInstructPix2PixPipeline.from_pretrained(
+                model_id, torch_dtype=torch.float16, safety_checker=None).to(f"cuda:{i}")
                         for i in range(self.world_size)]
         # self.pipe.schedulers = EulerAncestralDiscreteScheduler.from_config(self.pipe.scheduler.config)
 
