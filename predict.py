@@ -22,13 +22,14 @@ class Predictor(BasePredictor):
 
     # The arguments and types the model takes as input
     @torch.inference_mode()
-    def predict(self,
-                prompt:str="",
-                image_url:str="",
-                num_inference_steps:int=100,
-                image_guidance_scale:float=20,
-                guidance_scale:float=7.0,
-                id: int = 0
+    def predict(
+            self,
+            prompt:str="",
+            image_url:str="",
+            num_inference_steps:int=100,
+            image_guidance_scale:float=20,
+            guidance_scale:float=7.0,
+            id: int = 0
                 ) -> Any:
         """Run a single prediction on the model"""
         task = Process(target=run_inference, args=(id,
@@ -42,6 +43,5 @@ class Predictor(BasePredictor):
         # result = run_inference(id,
         #               prompt, image_url, num_inference_steps,
         #                 image_guidance_scale, guidance_scale, self.pipe[id])
-        task.join()
         print("Task finished")
-        return task
+        return None
