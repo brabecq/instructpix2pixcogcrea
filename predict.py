@@ -11,7 +11,6 @@ import torch.distributed as dist
 import logging
 
 from torch.multiprocessing import Process
-model_id = "timbrooks/instruct-pix2pix"
 
 def run_inference(rank,
                   prompt: str = "",
@@ -44,6 +43,7 @@ def download_image(url):
 
 class Predictor(BasePredictor):
     def setup(self):
+        model_id = "timbrooks/instruct-pix2pix"
         """Load the model into memory to make running multiple predictions efficient"""
         self.world_size = torch.cuda.device_count()
         self.pipe = [
