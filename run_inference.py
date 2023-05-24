@@ -14,7 +14,7 @@ def run_inference(rank,
                   guidance_scale: float = 1.5,
                   pipe: DiffusionPipeline = None):
     # Log the process
-    log_process = "Processing job_id: %s, job_operator: %s \n" % (rank)
+    log_process = "Processing job_id: %s" % (rank)
     logging.info(log_process)
 
     # Process the image
