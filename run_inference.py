@@ -22,7 +22,7 @@ def run_inference(rank,
     output.save(im_file, format="PNG")
     im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
 
-    return {"img": base64.b64encode(im_bytes), "gpu_index": rank}
+    return {"img": base64.b64encode(im_bytes)}
 
 
 def download_image(url):

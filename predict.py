@@ -31,15 +31,16 @@ class Predictor(BasePredictor):
                 id: int = 0
                 ) -> Any:
         """Run a single prediction on the model"""
-        task = Process(target=run_inference, args=(id,
-                             prompt, image_url,
-                             num_inference_steps,
-                             image_guidance_scale,
-                             guidance_scale,
-                             self.pipe[id]))
-        task.start()
-        logging.log(logging.INFO, "Started task on GPU %s" % id)
-        task.wait()
+        # task = Process(target=run_inference, args=(id,
+        #                      prompt, image_url,
+        #                      num_inference_steps,
+        #                      image_guidance_scale,
+        #                      guidance_scale,
+        #                      self.pipe[id]))
+        # task.start()
+        print("Started task on GPU %s" % id)
+        result = run_inference(id,
+                      prompt, image_url, num_inference_steps,
+                        image_guidance_scale, guidance_scale, self.pipe[id])
         print("Task finished")
-        print(task)
-        return task
+        return result
