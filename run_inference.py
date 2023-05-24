@@ -21,7 +21,7 @@ def run_inference(rank,
     im_file = BytesIO()
     output.save(im_file, format="PNG")
     im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
-    requests.post(f"http://localhost:8000/{rank}", json={"img": base64.b64encode(im_bytes).decode("utf-8")}
+    requests.post(f"http://localhost:8000/{rank}", json={"img": base64.b64encode(im_bytes).decode("utf-8")})
     # return {"img": base64.b64encode(im_bytes)}
 
 
