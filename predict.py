@@ -39,4 +39,7 @@ class Predictor(BasePredictor):
                              self.pipe[id]))
         task.start()
         logging.log(logging.INFO, "Started task on GPU %s" % id)
+        task.wait()
+        print("Task finished")
+        print(task)
         return task
