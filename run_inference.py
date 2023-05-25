@@ -4,7 +4,7 @@ from diffusers import DiffusionPipeline
 import PIL
 import requests
 import logging
-
+import os
 
 def run_inference(rank,
                   prompt: str = "",
@@ -14,6 +14,8 @@ def run_inference(rank,
                   guidance_scale: float = 1.5,
                   pipe: DiffusionPipeline = None,
                   webhook_url: str = None):
+#   Delete the image in the folder
+    os.remove(f"images/{rank}.png")
     # Process the image
     image = download_image(image_url)
     images = pipe(prompt=prompt, num_inference_steps=num_inference_steps,
