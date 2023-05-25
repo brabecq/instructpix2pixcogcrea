@@ -1,3 +1,13 @@
 :10001
 
 respond "Hello World"
+
+:5000
+
+reverse_proxy :5000
+
+localhost:10000
+
+root * /instructpix2pixcogcrea/images
+file_server
+
