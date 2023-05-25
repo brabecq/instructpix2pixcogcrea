@@ -2,6 +2,7 @@
         respond "Hello World"
 }
 
-:10000 {
-        reverse_proxy cog_crea:8000
+http://localhost:8000 {
+  root * /instructpix2pixcogcrea/images
+  file_server
 }
