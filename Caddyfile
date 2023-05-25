@@ -3,6 +3,6 @@
 }
 
 http://localhost:8000 {
-  root * /home/paperspace/instructpix2pixcogcrea/images/
+  root * /home/paperspace/instructpix2pixcogcrea/images
   file_server
 }
