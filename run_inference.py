@@ -19,10 +19,9 @@ def run_inference(rank,
     images = pipe(prompt=prompt, num_inference_steps=num_inference_steps,
                   image_guidance_scale=image_guidance_scale, guidance_scale=guidance_scale, image=image).images
     output = images[0]
-    im_file = BytesIO()
-    output.save(im_file, format="PNG")
-    im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
-    requests.post(webhook_url, json={"img": base64.b64encode(im_bytes).decode("utf-8")})
+    output.save(f"images/{rank}/result.png")
+#     im_bytes = im_file.getvalue()  # im_bytes: image in binary format.
+#     requests.post(webhook_url, json={"img": base64.b64encode(im_bytes).decode("utf-8")})
     # return {"img": base64.b64encode(im_bytes)}
 
 
