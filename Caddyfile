@@ -1,12 +1,12 @@
 :10001 {
-  respond "Hello World"
+        respond "Hello World"
 }
 
 :5000 {
-  reverse_proxy :5000
+        reverse_proxy :5000
 }
 
 locahost:10000 {
-  root * /instructpix2pixcogcrea/images
-  file_server
+        root * /instructpix2pixcogcrea/images
+        file_server
 }
