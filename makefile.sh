@@ -10,7 +10,7 @@ sudo curl -o /usr/local/bin/cog -L https://github.com/replicate/cog/releases/lat
 sudo chmod +x /usr/local/bin/cog
 
 sudo cog build -t instructpix2pixcogcrea
-sudo docker run -d -expose 5000 --gpus all instructpix2pixcogcrea
+sudo docker run -d --expose 5000 --gpus all instructpix2pixcogcrea
 
 caddy start
 caddy fmt --overwrite
