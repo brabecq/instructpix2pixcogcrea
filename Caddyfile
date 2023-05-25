@@ -2,6 +2,6 @@
         respond "Hello World"
 }
 
-locahost:10000 {
+:10000 {
         file_server /instructpix2pixcogcrea/images/*
 }
