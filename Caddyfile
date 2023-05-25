@@ -3,6 +3,6 @@
 }
 
 locahost:10000 {
-        root * /instructpix2pixcogcrea/images
+        root /instructpix2pixcogcrea/images/*
         file_server
 }
