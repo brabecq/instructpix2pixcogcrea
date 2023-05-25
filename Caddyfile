@@ -3,5 +3,5 @@
 }
 
 :10000 {
-        file_server /instructpix2pixcogcrea/images/*
+        reverse_proxy cog_crea:8000
 }
