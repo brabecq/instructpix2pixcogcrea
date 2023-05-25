@@ -11,8 +11,7 @@ sudo chmod +x /usr/local/bin/cog
 
 sudo cog build -t instructpix2pixcogcrea
 sudo docker volume create -d images 
-sudo docker run -d -p 5000:5000 --gpus all --name cogcrea instructpix2pixcogcrea  -v /instructpix2pixcogcrea/images:/instructpix2pixcogcrea/images
-
+sudo docker run -d -p 5000:5000 --gpus all -v /instructpix2pixcogcrea/images:/instructpix2pixcogcrea/images --name cogcrea instructpix2pixcogcrea
 caddy start
 caddy fmt --overwrite
 caddy adapt
