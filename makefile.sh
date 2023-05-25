@@ -13,5 +13,6 @@ sudo cog build -t instructpix2pixcogcrea
 sudo docker run -d -p 5000:5000 --gpus all instructpix2pixcogcrea
 
 caddy start
+caddy fmt --overwrite
 caddy adapt
 caddy reload
