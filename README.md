@@ -1,7 +1,16 @@
 # instructpix2pixcogcrea
-Cog repo for instructpix2pix for the crea.visions project
+Repository using Cog and a Caddy reverse-proxy to use a cog container to run several predictions at the same time.
 
-## Lambda labs
+## Structure of the localhost
+To run predictions: 
+:5000/predictions
+
+To retrieve the results: 
+:8000/<index>.png
+  
+## Installation with different service providers
+
+### Lambda labs
 When the instance on lambda labs is created and the SSH key setup run on your computer:
 ```console
 ssh -i <your-ssh-key> ubuntu@<IP> 
@@ -15,7 +24,7 @@ chmod +x makefile.sh
 ./makefile.sh
 ```
 
-## Paperspace
+### Paperspace
 ```console
 ssh paperspace@<IP>
 ```
@@ -34,5 +43,3 @@ cd instructpix2pixcogcrea
 chmod +x makefile.sh
 ./makefile.sh
 ```
-
-And that's it!
